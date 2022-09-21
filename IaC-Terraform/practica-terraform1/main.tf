@@ -3,10 +3,22 @@ provider "aws" {
 }
 
 resource "aws_instance" "platzi-instance" {
-  ami           = "ami-08bf7fc6ae9c06046"
-  instance_type = "t2.micro"
-  tags = {
-    Name = "practica1"
-    Env  = "Dev"
+  ami             = var.ami_id
+  instance_type   = var.instance_type
+  tags            = var.tags
+  security_groups = ["${aws_security_group.ssh_connection.name}"]
+}
+
+resource "aws_security_group" "ssh_connection" {
+  name = var.sg_name
+
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    content {
+      from_port   = ingress.value.from_port
+      to_port     = ingress.value.to_port
+      protocol    = ingress.value.protocol
+      cidr_blocks = ingress.value.cidr_blocks
+    }
   }
 }
