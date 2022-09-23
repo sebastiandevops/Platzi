@@ -7,6 +7,15 @@ resource "aws_instance" "platzi-instance" {
   instance_type   = var.instance_type
   tags            = var.tags
   security_groups = ["${aws_security_group.ssh_connection.name}"]
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "admin"
+      private_key = file("~/estudio/Platzi/IaC-Terraform/demo-packer/scripts/packer-key.pub")
+      host        = self.public_ip
+    }
+    inline = ["echo hello", "docker run -it -d -p 80:80 ajinomano/hello-platzi:v1"]
+  }
 }
 
 resource "aws_security_group" "ssh_connection" {
@@ -22,13 +31,13 @@ resource "aws_security_group" "ssh_connection" {
     }
   }
 
-    dynamic "egress" {
-    for_each = var.egress_rules
-    content {
-      from_port   = egress.value.from_port
-      to_port     = egress.value.to_port
-      protocol    = egress.value.protocol
-      cidr_blocks = egress.value.cidr_blocks
-    }
-  }
+  # dynamic "egress" {
+  #   for_each = var.egress_rules
+  #   content {
+  #     from_port   = egress.value.from_port
+  #     to_port     = egress.value.to_port
+  #     protocol    = egress.value.protocol
+  #     cidr_blocks = egress.value.cidr_blocks
+  #   }
+  # }
 }
