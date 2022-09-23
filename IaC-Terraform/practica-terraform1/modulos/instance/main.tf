@@ -21,4 +21,14 @@ resource "aws_security_group" "ssh_connection" {
       cidr_blocks = ingress.value.cidr_blocks
     }
   }
+
+    dynamic "egress" {
+    for_each = var.egress_rules
+    content {
+      from_port   = egress.value.from_port
+      to_port     = egress.value.to_port
+      protocol    = egress.value.protocol
+      cidr_blocks = egress.value.cidr_blocks
+    }
+  }
 }
