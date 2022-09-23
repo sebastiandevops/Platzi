@@ -1,0 +1,7 @@
+#cloud-config
+package_update: true # actualizar distro
+packages: # paquetes que gustes instalar
+  - docker.io
+  - docker-compose # si lo necesitas
+runcmd:
+  - docker run -it -d -p 80:80 ajinomano/hello-platzi:v1

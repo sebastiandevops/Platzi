@@ -7,15 +7,16 @@ resource "aws_instance" "platzi-instance" {
   instance_type   = var.instance_type
   tags            = var.tags
   security_groups = ["${aws_security_group.ssh_connection.name}"]
-  provisioner "remote-exec" {
-    connection {
-      type        = "ssh"
-      user        = "admin"
-      private_key = file("~/estudio/Platzi/IaC-Terraform/demo-packer/scripts/packer-key.pub")
-      host        = self.public_ip
-    }
-    inline = ["echo hello", "docker run -it -d -p 80:80 ajinomano/hello-platzi:v1"]
-  }
+  user_data       = file("./userdata.yaml")
+  # provisioner "remote-exec" {
+  #   connection {
+  #     type        = "ssh"
+  #     user        = "admin"
+  #     private_key = file("~/estudio/Platzi/IaC-Terraform/demo-packer/scripts/packer-key.pub")
+  #     host        = self.public_ip
+  #   }
+  #   inline = ["echo hello", "docker run -it -d -p 80:80 ajinomano/hello-platzi:v1"]
+  # }
 }
 
 resource "aws_security_group" "ssh_connection" {
