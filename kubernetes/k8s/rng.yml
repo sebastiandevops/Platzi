@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DeamonSet
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
