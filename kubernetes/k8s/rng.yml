@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T12:29:23Z"
+  generation: 1
+  labels:
+    app: rng
+  name: rng
+  namespace: default
+  resourceVersion: "1188"
+  uid: 3e138801-7c5e-46b9-b712-141752276f01
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: rng
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rng
+    spec:
+      containers:
+      - image: dockercoins/rng:v0.1
+        imagePullPolicy: IfNotPresent
+        name: rng
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2022-09-29T12:29:33Z"
+    lastUpdateTime: "2022-09-29T12:29:33Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-09-29T12:29:23Z"
+    lastUpdateTime: "2022-09-29T12:29:33Z"
+    message: ReplicaSet "rng-7c7c6c8d74" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
