@@ -1,0 +1,10 @@
+**Liveness **- the kubelet uses these probes as an indicator to restart a container. A liveness probe is used to detect when an application is running and is unable to make progress. When a container gets in this state, the pod’s kubelet can restart the container via its restart policy.
+
+**Readiness **- This type of probe is used to detect if a container is ready to accept traffic. You can use this probe to manage which pods are used as backends for load balancing services. If a pod is not ready, it can then be removed from the list of load balancers.
+
+Types Health Checks:
+
+ExecAction - executes a command inside the container.
+++TCPSocketAction +± performs a TCP check against the container’s IP address on a specified port.
+HTTPGetAction - performs an HTTP GET request on the container’s IP.
+
