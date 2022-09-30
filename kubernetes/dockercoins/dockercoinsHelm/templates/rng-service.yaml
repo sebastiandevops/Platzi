@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-09-29T12:44:22Z"
+  labels:
+    app: rng
+  name: rng
+  namespace: default
+  resourceVersion: "2217"
+  uid: c0822c79-a0e1-4dcd-a8fd-0679656bcef5
+spec:
+  clusterIP: 10.96.45.52
+  clusterIPs:
+  - 10.96.45.52
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: rng
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

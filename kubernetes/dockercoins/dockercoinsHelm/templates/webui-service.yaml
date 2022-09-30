@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-09-29T12:47:21Z"
+  labels:
+    app: webui
+  name: webui
+  namespace: default
+  resourceVersion: "2426"
+  uid: 15bb800e-a4cb-4b49-b999-c6cbff6b62f4
+spec:
+  clusterIP: 10.101.139.147
+  clusterIPs:
+  - 10.101.139.147
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 31920
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: webui
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
