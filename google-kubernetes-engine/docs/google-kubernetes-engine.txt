@@ -1,0 +1,26 @@
+Kubernetes Engine es la solución administrada de Google en la plataforma de Google Cloud Platform. Su función es administrar el cluster de máquinas, la instalación de los clientes y todos los procesos para el despliegue de nuestras aplicaciones. Google se encarga de todo.
+
+Esta herramienta tiene las siguientes funcionalidades:
+
+    Formato Docker: Nuestras máquinas y contenedores deben usar este formato para poder ser desplegadas.
+    Auto-escalado: La performance de nuestra aplicación no se verá afectada cuando entren muchísimos usuarios al mismo tiempo. Podrás soportar toda esta carga sin necesidad de generar tus máquinas virtuales a mano.
+    Stackdriver: La solución de monitoreo y control de Google. Nos ayuda a entender muy fácilmente qué está pasando en la infraestructura: logs, alertas, monitoreo de la CPU y la memoria, etc.
+    Cloud VPN: Nos permite tener una nube híbrida con la cual tendremos nuestros datos y aplicaciones segregados en la nube y utilizando información de nuestros servidores locales. Todos estos procesos de forma segura.
+    Cloud IAM: Administración de usuarios gracias al soporte de autenticación de Google. Podemos asignar permisos y roles de lectura, escritura y administración sobre nuestro cluster.
+
+Ventajas de Kubernetes Engine:
+
+    Actualizaciones automáticas
+    Reparación automática
+    Registro privado de contenedores
+    Versiones uniformes y rápidas
+    Soporte para GPU
+
+Alternativas:
+
+    Redhat Openshift
+    Docker Swarm
+    Amazon Elastic Container Service for Kubernetes
+    IBM Cloud Kubernetes Service
+    Azure Kubernetes Service (AKS)
+
