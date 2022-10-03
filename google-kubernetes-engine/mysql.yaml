@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: mysql-pod
+spec:
+  containers:
+  - image: mysql:5.6
+    name: test-container
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: password
+    ports:
+      - containerPort: 3306
+        name: mysql
+    volumenMounts:
+    - mountPath: /var/lib/mysql
+      name: mysql-persistent-storage
+  volumes:
+    - name: mysql-persistent-storage
+      gcePersistentDisk:
+        pdName: disk2
+        fsType: ext4
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql-pod
+  clusterIP: None
