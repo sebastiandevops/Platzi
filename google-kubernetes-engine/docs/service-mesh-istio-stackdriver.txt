@@ -1,0 +1,28 @@
+Service Mesh nos ayuda a fortalecer las políticas de comunicación en nuestros clusters de kubernetes.
+
+Si tenemos una aplicación que se comunica con un almacén de datos en producción, no queremos que las versiones de desarrollo se comuniquen con las versiones de producción.
+
+Para esto, normalmente necesitaríamos generar muchas máquinas aisladas por sub-redes, fortaleciendo los procesos por medio de firewalls, proxies y demás servicios de red. Todo esto enfocado hacia los bytes que se transmiten dentro de la red.
+
+Con Service Mesh podemos definir estas reglas de comunicación a un alto nivel, a través de servicios usando un lenguaje declarativo.
+
+Caracteristicas de Service Mesh:
+
+    Red para servicios, no para bytes
+    Visibilidad
+    Resiliencia y eficacia
+    Control de tráfico
+    Seguridad
+    Fortalecimiento de políticas
+
+Istio es un producto creado por Google e IBM que nos ayuda a reducir la complejidad del Service Mesh. Ademas, nos ayuda a tener control sobre los servicios de nuestra aplicación y entender el tráfico de cada uno de estos.
+
+Características de Istio:
+
+    Provee un service discovery
+    Seguridad
+    Instrumentación
+    Rutas dinámicas
+    Telemetría
+
+Stackdriver es un servicio que nos provee Google para monitoreo, alertas, logs y ayuda sobre el control nuestras aplicaciones. Ademas, Kubernetes Engine tiene conexión directa (sin la necesidad de generar o instalar agentes diferentes) con Stackdriver.

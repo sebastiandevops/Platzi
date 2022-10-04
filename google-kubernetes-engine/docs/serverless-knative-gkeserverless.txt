@@ -1,0 +1,12 @@
+Serverless es un tipo de arquitectura donde los servidores (físicos o en la nube) dejan de existir para el desarrollador y en cambio el código corre en ““ambientes de ejecución”” que administran proveedores como Amazon, Google, IBM, entre otros.
+
+Características de Serverless:
+
+    No se administran servidores
+    Auto Escalable
+    Fácil integración con otros servicios del proveedor
+    Cobro por uso
+
+Knative es una solución open-source que brinda servicios tipo serverless para desplegar contenedores. Esta herramienta es amigable con los desarrolladores ya que se encarga de la administración del cluster, saber cuantas replicas necesita nuestra aplicación, cuales son los pods, etc. Incluso podemos escalar nuestras aplicaciones desde 0.
+
+GKE Serverless Addon es una implementación de Knative auto-administrada gracias a Google Kubernetes Engine. Esta herramienta fue anunciada en el Google Cloud Next 18 y aún esta en estado Alfa, pero muy pronto estará disponible para el público.
