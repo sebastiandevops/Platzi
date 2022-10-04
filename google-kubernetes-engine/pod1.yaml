@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-alpine
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx-alpine
+    image: nginx:alpine
+  nodeSelector:
+    name: pool-1

@@ -1,0 +1,65 @@
+Generando un certificado https con Let's Encrypt para GCP
+33/41
+
+Lectura
+
+El protocolo https es una herramienta útil a nivel de seguridad de la información debido a que te permite cifrar la información haciendo más segura la transmisión de datos. Esta herramienta también te permite generar confianza en tus usuarios por que les indica que estas preocupado por proteger su información. Por este motivo en esta lectura vamos a ver como crear un certificado https con Let’s Encrypt para que funcione en los diferentes servicios de Google Cloud Platform.
+
+Lo primero que tienes que saber es que es Let’s Encrypt, la cual es una entidad certificadora que está dando certificados ssl de manera gratuita (normalmente estos certificados tienen un costo que supera los 50 dólares por año) con una duración de 3 meses (esto significa que hay que renovarlos antes de la fecha de vencimiento).
+
+Ahora vamos a ver cuales son los pasos para crear el certificado:
+0. Prerrequisitos:
+
+a. Comprar un dominio y tener acceso al administrador de los DNS
+b. Configurar un proyecto en Google Cloud Platform
+c. Habilitar la facturación ingresando una tarjeta de crédito (te sugiero activar los créditos que ofrece la plataforma para no tener gastos en la tarjeta de crédito).
+d. Acceder a Google Cloud Shell entrando a https://console.cloud.google.com y haciendo click en el botón de Cloud Shell que está en la parte superior izquierda del panel
+Captura de pantalla 2018-09-18 a la(s) 9.17.08 a. m..png
+
+O ingresando desde el navegador a https://console.cloud.google.com/cloudshell
+1. Instalación del agente:
+
+Para generar el certificado hay que instalar un agente llamado certbot, él cual es un programa en línea de comandos que permite automatizar la mayor parte de los pasos. La forma más sencilla de utilizarlo es por medio de la imagen oficial de docker. Para facilitar su utilización vamos a crear un alias del comando de docker para utilizarlo como si fuera el comando certbot.
+
+echo "alias certbot='docker run -it -v ~/letsencrypt/:/etc/letsencrypt/ certbot/certbot'" >> .aliases echo "source .aliases" >> .bashrc source .aliases
+2. Creación del certificado:
+
+Para la creación del certificado vamos a correr el comando cerbot con las banderas –manual --preferred-challenges dns para indicar que la creación es de manera manual (porque Let’s Encrypt permite crear el certificado de manera automática como plugin de Apache o Nginx), utilizando reto para la validación y que dicho reto es por DNS (o sea poniendo un registro de tipo TXT en los DNS). Para ello corremos los siguientes comandos:
+
+certbot certonly --manual --preferred-challenges dns
+
+Esto activará un asistente paso a paso el cual nos preguntará cual es el correo electrónico que estará ligado al certificado y luego nos preguntará si estamos de acuerdo con las políticas de uso del servicio, a lo cual responderemos con la letra A (de Agree).
+
+Luego preguntará si estamos de acuerdo con compartir nuestra dirección de correo como parte de la validación del certificado a lo cual puedes responder Y o N dependiendo de tus preferencias.
+
+Ahora nos pregunta cual es el dominio para el cual le vamos a instalar el certificado en mi caso es test.carlos-prieto.com
+
+Please enter in your domain name(s) (comma and/or space separated) (Enter 'c' to cancel): test.carlos-prieto.com Obtaining a new certificate Performing the following challenges: dns-01 challenge for test.carlos-prieto.com
+Después nos pide confirmación para guardar la IP del dominio en los registros de Let’s Encrypt a lo cual debemos responder Y.
+
+Ahora aparece un mensaje el cual dice que debemos crear un registro de tipo TXT para el dominio _acme-challenge.<tu dominio.com> en mi caso es _acme-challenge.test.carlos-prieto.com con una cadena de texto que muestra el mensaje.
+
+`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please deploy a DNS TXT record under the name
+_acme-challenge.<tu dominio.com> with the following value:
+sdsa3bLuFmkJXh-8pGvDLWoCcSAWUPwNnyyf1VvJUio
+Before continuing, verify the record is deployed.
+
+Ahora vamos a nuestro servicio de dns creamos el registro txt con la cadena de texto y verificamos el registro. para ello podemos hacerlo por medio de la página https://mxtoolbox.com/ y en la caja de texto Domain Name ponemos txt:_acme-challenge.<tudominio.com> en mi caso es txt:_acme-challenge.test.carlos-prieto.com
+Captura de pantalla 2018-09-18 a la(s) 10.15.19 a. m..png
+
+Hacemos click en el botón para verificar (esto puede tardar algún tiempo dependiendo del TTL que configures, por lo que tendrás que hacerlo varias veces ) y aparecerá un mensaje como el siguiente.
+Captura de pantalla 2018-09-18 a la(s) 10.18.39 a. m..png
+
+Después vamos nuevamente al Cloud Shell y damos Enter para que se valide la información. Si todo fue correcto Let’s Encrypt nos felicitara diciendo que el proceso fue exitoso.
+3. Creación de llave privada en rsa y configuración de permisos sobre archivos.
+
+Para tener acceso a los archivos del certificado y poderlos manipular le vamos a dar permisos de lectura y escritura a nuestro usuario con el siguiente comando:
+
+sudo chmod -R 755 ~/letsencrypt/archive
+
+Para que se pueda configurar el certificado que acabamos de generar en Google Cloud Platform hay que convertir la llave privada al formato rsa para lo cual ejecutamos el siguiente comando (Cambiar la palabra <tu dominio.com> por tu dominio en mi caso es test.carlos-prieto.com).
+
+sudo openssl rsa -inform pem -in ~/letsencrypt/archive/<tu dominio.com>/privkey1.pem -outform pem > ~/letsencrypt/archive/<tu dominio.com>/rsaprivatekey.pem
+
+Con estos pasos ya están listo los archivos para poder realizar la configuración del certificado https en los servicios de GCP Loadbalancer o Google App Engine. Para poder copiarlos más fácilmente te sugiero abras estos archivos con el editor de texto de Cloud Shell haciendo click en el icono del lápiz en Cloud Shell.
