@@ -1,0 +1,15 @@
+**¿ Está tu aplicación preparada para Docker Swarm ? **
+Para saberlo, necesitas comprobarlo con los 12 factores
+
+    Codebase : el código debe estar en un repositorio
+    Dependencies : deben estar declaradas en un archivo de formato versionable, suele ser un archivo de código
+    Configuration : debe formar parte de la aplicación cuando esté corriendo, puede ser dentro de un archivo
+    Backing services : debe estar conectada a tu aplicación sin que esté dentro, se debe tratar como algo externo
+    Build, release, run : deben estar separadas entre sí.
+    Processes : todos los procesos los puede hacer como una unidad atómica
+    Port binding : tu aplicación debe poder exponerse a sí misma sin necesidad de algo intermediario
+    Concurrency : que pueda correr con múltiples instancias en paralelo
+    Disposabilty : debe estar diseñada para que sea fácilmente destruible
+    Dev/Prod parity : lograr que tu aplicación sea lo más parecido a lo que estará en producción
+    Logs : todos los logs deben tratarse como flujos de bytes
+    Admin processes : la aplicación tiene que poder ser ejecutable como procesos independientes de la aplicación
