@@ -1,0 +1,7 @@
+La arquitectura de Swarm tiene un esquema de dos tipos de servidores involucrados: los managers y los workers.
+
+    Los managers son encargados de administrar la comunicación entre los contenedores para que sea una unidad homogénea.
+
+    Los workers son nodos donde se van a ejecutar contenedores, funciona como un núcleo, los contenedores estarán corriendo en los workers.
+
+**Todos deben tener Docker Daemon (idealmente la misma versión) y deben ser visibles entre sí. **
