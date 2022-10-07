@@ -1,0 +1,13 @@
+Herramientas:
+
+    Terraform: despliegues multi cloud, posee una version open source y otra enterprise
+
+    Pulumi: despligues multi cloud, podes sacar ventajas tus conocimientos en un lenguaje
+
+    Serverless Framework: para el despliegue de Lambdas, dynamoDb, api gateway, s3, kinesis
+
+    SDK: provista diferentes lenguajes, para python se llama boto3
+
+    CDK (Cloud Development Kit): diferencia con el sdk, es que no va usar librerias particulares, sino que dentro del mismo codigo python vamos a llamar a los recursos y crealos. Por detras cdk va a generar un template de CFN.
+
+    AWS SAM (Serverless Aplication Model): para el despliegue de Lambdas, dynamoDb, api gateway, kinesis. Cambia la definición del recurso, para desplegar una lambda en CFN se declara como “AWS::Lambda::Function” y en SAM “AWS::Serverless::Function”
