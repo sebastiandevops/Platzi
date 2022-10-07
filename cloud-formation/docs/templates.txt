@@ -1,0 +1,43 @@
+TEMPLATES:
+• AWSTemplateFormatVersion: “versión date”: Define las capacidades de la plantilla
+• Description: String. Texto que describe la plantilla, es opcional.
+• Metadata: Información adicional del template. Se pueden crear tres subregistros:
+
+    AWS::CloudFormation::Init
+    AWS::CloudFormation::Interface
+    AWS::CloudFormation::Designer
+    • Parameters: Valores que se le pasan al template cuando se crea o actualiza un Stack. Pueden ser referenciados desde Resources u Outputs. Ejemplo:
+
+    Parameters:
+	myKeryPair:
+		Description: Amazon EC2 Key Pair
+		Type: “AWS::EC2::KeyPair::KeyName”
+	mySubnetIDs:
+		Description: Subnet IDs
+		Type: “List<AWS::EC2::Subnet::Id>”
+	DbSubnetIpBlocks:
+		Description: “Comma-delimited list of three CIDR blocks”
+		Type: CommaDelimitedList
+		Default: “10.0.48.0/24, 10.0.112.0/24, 10.0.176.0/24”
+	DBPort:
+		Default: 3306
+		Description: TCP/IP port for the database
+		Type: Number
+		MinValue: 1150
+		MaxValue: 65535
+	DBPwd:
+		NoEcho: true
+		Description: The database admin account password
+		Type: String
+		MinLength: 1
+		MaxLength: 41
+		AllowedPattern: ^[a-zA-z0-9]*$
+
+• Mappings: Arreglos de llave valor asociados que se usan para agregar parámetros condicionales. Similar a una tabla de búsqueda. Utiliza la función Fn::FindInMap, Ej:
+
+    Mappings:
+	RegionMap:
+		us-east-1:
+			“HVM64”: “ami-0ff8a91507f77f867”
+		us-west-1:
+			“HVM64”: “ami-0bdb828fd58c52235”
