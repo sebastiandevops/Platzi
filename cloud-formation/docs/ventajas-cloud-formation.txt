@@ -1,0 +1,14 @@
+Introducción y ventajas de usar Cloudformation
+• Flujo de despliegue: código, se verifica y hay una fase de despliegue. Se pueden crear templates en formato YAML o JSON.
+• Servicios: Stacks, stack sets, integración full con todos los componentes de AWS.
+• Beneficios: AWS brinda soporte sobre tu código de cloudformation en caso de que no despliegue tu integración, es decir brinda soporte sobre tu código si tienes el plan bussiness contratado.
+• Integración nativa con todos los servicios de AWS.
+• Designer: te permite crear infraestructura de forma visual y si ya lo tienes creado, cargas tu plantilla y veras como luce.
+• Multicuenta: desplegar en 3 cuentas diferentes la misma infraestructura.
+• Flexibilidad: creación de recursos dinámicamente con custom resources.
+• Cloudformation: gratis, se te cobra por los recursos que este despliegue.
+• Escalabilidad: puede crecer desde el recurso mas simple hasta una arquitectura más compleja.
+• Seguridad: todos los despliegues están completamente asegurados, cifrado de llaves, etc.
+• Estabilidad: al ser administrado por AWS tiene un alto nivel de SLA.
+• Transaccional: espera a que todos los recursos estén creados para desplegar la aplicación, sino hará un rollback.
+Empresa que usan Cloud Formation: Barcelona FC, Expedia, Coinbase, nextdoor.
