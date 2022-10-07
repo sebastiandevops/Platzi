@@ -1,0 +1,15 @@
+Docker Swarm, lo que hace es, tener un Cluster de muchas maquinas, pero desde afuera, para los usuarios Developers (Administrativos, Operadores) se vea como un Docker Deamon.
+
+Esto hace que parezca que estamos usando Docker Local (en nuestras computadoras) pero tenemos acceso a muchos nodos o maquinas que están corriendo Docker Deamon.
+
+Y Docker Swarm lo que nos facilita es toda la paste de actualización de servicios, rotación, administración, etc. Para lograr una alta disponibilidad de nuestro servicio.
+
+La escalabilidad es el poder aumentar la capacidad de potencia de computo para poder servir a más usuarios o a procesos más pesados a medida que la demanda avanza.
+
+A la hora de hablar de escalabilidad encontramos dos tipos de soluciones, escalabilidad vertical, que consiste en adquirir un mejor hardware que soporte mi solución o una escalabilidad horizontal, en la cual varias máquinas están corriendo el mismo software y por lo tanto es la solución más utilizada en los últimos tiempos.
+
+La disponibilidad es la capacidad de una aplicación o un servicio de poder estar siempre disponible (24 horas del día), aún cuando suceda un improvisto.
+
+Es mayor la disponibilidad cuando se realiza escalabilidad horizontal
+
+Swarm no ofrece la solución a estos problemas.
