@@ -6,7 +6,8 @@ TEMPLATES:
     AWS::CloudFormation::Init
     AWS::CloudFormation::Interface
     AWS::CloudFormation::Designer
-    • Parameters: Valores que se le pasan al template cuando se crea o actualiza un Stack. Pueden ser referenciados desde Resources u Outputs. Ejemplo:
+
+• Parameters: Valores que se le pasan al template cuando se crea o actualiza un Stack. Pueden ser referenciados desde Resources u Outputs. Ejemplo:
 
     Parameters:
 	myKeryPair:
