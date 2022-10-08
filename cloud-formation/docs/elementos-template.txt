@@ -1,0 +1,7 @@
+Conditions: controlan si se crean ciertos recursos o si se asigna un valor a ciertas propiedades durante la creacion del stack.
+
+Transforms: para aplicaciones serverless, si se especifica se pueden usar sintaxis de AWS SAM.
+
+Resources: especifica los recursos y las propiedades a crear, porque siempre vamos a desplegar un recurso. Campo obligatorio.
+
+Outputs: valores devueltos de las propiedades del recurso creado, la funcion lambda toma el export de dynamo.
