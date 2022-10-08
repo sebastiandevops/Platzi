@@ -9,14 +9,18 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
+      # Esquema de claves para la tabla y los índices
+      # !Ref = Parameters
         - AttributeName: !Ref DynamoAtributo
+        #Nombre del atributo, Obligatorio, Lo obtenemos como parametro
           AttributeType: S
+          # S = string
       KeySchema:
         - AttributeName: !Ref DynamoAtributo
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
-      SSESpecification: SSESpecification
-      StreamSpecification:
+      SSESpecification:
+        # Cifra la base de datos
         SSEEnabled: true
       TableName: !Ref NombreDynamo
 Outputs:
