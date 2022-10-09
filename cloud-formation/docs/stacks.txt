@@ -1,0 +1,18 @@
+¿Que es un stack?
+
+Coleccion de recursos que se manejan como unidad
+Gestion de recursos
+
+CloudFormation asegura que todos los recursos sean creados o eliminados
+¿Que pasa si un recurso falla en crearse?
+
+Se hace rollback a todos los recursos del stack
+¿Que pasa si borro un stack?
+
+Todos los recursos asociados se borran
+¿Que es un Drift?
+
+Detecta una desviación entre el stack y los recursos desplegados
+¿Que puedo identificar con un Drift?
+
+Recursos agregados, eliminados y con propiedades diferentes
