@@ -1,0 +1,18 @@
+Stack anidados, surgen por los limites de cloudformation
+Se crea un stack maestro con stacks mas pequeños.
+Limites: para crear recursos que necesiten pasar los limites.
+Granularidad: cada recurso queda independiente en stacks separados.
+Orden: se pueden crear precedencias y condiciones entre recursos.
+Interacción: los stacks se comunican entre si a través de los outputs.
+
+Nested Stacks
+Limites de CloudFormation
+	100 Mappings : Stack
+	200 Recursos: Stack
+	51,200 bytes: Cuerpo de template para CreateStack, UpdateStack, or ValidateTemplate
+	460,800 bytes: Tamaño maximo de template en S3
+Donde usar Nested Stacks
+	Limites: Para crear recursos que necesiten pasar los limites de CloudFormation
+	Granularidad: Cada Recurso queda con un Stack independiente
+	Orden: 	Se pueden crear precedencias y condiciones entre recursos
+	Interaccion: Los stacks se comunican entre si a traves de outputs
