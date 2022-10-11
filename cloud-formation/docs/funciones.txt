@@ -1,0 +1,23 @@
+GetAtt: 
+    Funcionalidad: devuelve el valor de un atributo de un recurso en el template.
+    Composición: nombre del recurso y del atributo.
+    La usamos cuando se quiere tomar algún atributo de un recurso dentro del mismo stack.
+
+FindlnMap: 
+    Funcionalidad: devuelve el valor correspondiente al map declarado en la sección Mappings.
+    Composición: MapName, TopLevelKey y SecondLevelKey.
+    La usamos cuando necesitemos en el template algún valor de la sección Mappings.
+
+Join:
+    Funcionalidad: une un listado de valores en uno solo.
+    Composición: un listado de valores y un delimitador.
+    La usamos cuando necesitemos unir varios valores y separarlos por algún delimitador.
+
+Split:
+    Funcionalidad: dividir una cadena en una lista de valores.
+    La usamos cuando necesitemos divider un arreglo en valores independientes y tomar solo uno de esos valores.
+
+Select:
+    Funcionalidad: selecciona un valor de una lista de valores.
+    La usamos cuando necesitemos dividir un arreglo en valores independientes y tomar solo uno de esos valores.
+
