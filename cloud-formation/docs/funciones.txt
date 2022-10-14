@@ -21,3 +21,18 @@ Select:
     Funcionalidad: selecciona un valor de una lista de valores.
     La usamos cuando necesitemos dividir un arreglo en valores independientes y tomar solo uno de esos valores.
 
+Sub:
+    Funcionalidad: sustituye una variable son un input que nosotros especifiquemos.
+    Composición: String VarName: ValueName.
+    La usamos cuando se requiera reemplazar un valor en u string, puede ser un pseudo parameter.
+
+Ref:
+    Funcionalidad: retorna un valor de un parámetro o un recurso.
+    Composición: Stringm VarName: ValueName.
+    La usamos cuando se necesite hacer referencia a un parámetro o cuando queramos hacer referencia a una propiedad de un recurso que no este en GetAtt.
+
+ImportValue:
+    Funcionalidad: devuelve el valor de una salida exportada de otro stack.
+    Composición: referencia al nombre lógico del recurso exportado.
+    La usamos cuando queremos llamar una propiedad exportada de otro stack.
+
