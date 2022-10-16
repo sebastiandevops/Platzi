@@ -1,0 +1,23 @@
+Manejo de errores: Trazabilidad en todos los despliegues
+
+Rollback: Rollback automático ante errores
+
+CodeCommit: Trazabilidad en todos los despliegues
+
+CloudFormation: Infra como código
+
+Codepipeline: Orquesta todos los componentes de despliegue
+
+CodeBuild: Compilaciones y creación de artefactos
+
+(Repositorios fuera de AWS como github y gitlab ellos pueden conectarse a codepipeline para hacer deploy de su codigo)
+
+IAM: Gestión de roles en el Pipeline
+
+CloudWatch: Visibilidad y encontrar errores de todos los despliegues, estado de los pipelines y profundizar en los errores
+
+S3: Almacenar artefactos, guardar artefactos que se crean en el pipeline
+
+SecretsManager: Gestión de secretos
+
+KMS: Cifrado de la información, objetos en AWS, llaves de seguridad en el pipeline
