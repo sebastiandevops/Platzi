@@ -39,3 +39,15 @@ ImportValue:
 If:
     Funcionalidad: retorna un valor si una condición se cumple y otro si no.
     Composición: ![contition_name, value_if_true, value_if_false]
+
+OR:
+    Funcionalidad: retorna true si un valor es true o false si un valor es falso.
+    Composición: !Or[condition, ...]
+
+AND:
+    Funcionalidad: retorna true si todos los valores son true o false si algún valor es falso.
+    Composición: !And[condition]
+
+Equals:
+    Funcionalidad: retorna true si 2 valores son iguales o false si no lo son.
+    Composición: !Equals[value_1, value_2]
