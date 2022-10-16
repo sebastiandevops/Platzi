@@ -36,3 +36,6 @@ ImportValue:
     Composición: referencia al nombre lógico del recurso exportado.
     La usamos cuando queremos llamar una propiedad exportada de otro stack.
 
+If:
+    Funcionalidad: retorna un valor si una condición se cumple y otro si no.
+    Composición: ![contition_name, value_if_true, value_if_false]
