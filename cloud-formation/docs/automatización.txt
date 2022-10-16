@@ -1,0 +1,9 @@
+Ventajas de Automatizar:
+
+    Agilidad (Optimización de tiempo)
+    Control de la integridad de la infraestructura (Versionamiento)
+    Seguridad (Cifrado de secretos)
+    Usabilidad (Reutilización)
+    Manejo y visibilidad de errores
+    Rollback automático
+
