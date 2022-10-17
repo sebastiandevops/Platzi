@@ -5,5 +5,5 @@ Ventajas de Automatizar:
     Seguridad (Cifrado de secretos)
     Usabilidad (Reutilización)
     Manejo y visibilidad de errores
-    Rollback automático
+    Rollback automático.
 
