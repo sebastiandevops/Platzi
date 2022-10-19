@@ -1,0 +1,47 @@
+CRATE_COMPLETE
+Creación completada de uno o más stacks.
+
+CREATE_IN_PROGRESS
+Creación de uno o más stacks en proceso.
+
+CREATE_FAILED
+Creación fallida de uno o más stacks. (se recomienda revisar los permisos, parámetros rechazados).
+
+DELETE_COMPLETE
+Eliminación completa de recursos dentro del stack. Tiempo de retención 90 días.
+
+DELETE_FAILED
+Eliminación fallida de recursos. (recursos que aún están en funcionamiento).
+
+DELETE_IN_PROGRESS
+Proceso de eliminación aun no ha terminado.
+
+REVIEW_IN_PROGRESS
+Está en proceso un change set, pero aún no ha sido ejecutado.
+
+ROLLBACK_COMPLETE
+Eliminación completa de los recursos después de encontrar un error.
+
+ROLLBACK_FAILED
+Eliminación fallida de recursos después de encontrar algún error en el stack.
+
+ROLLBACK_IN_PROGRESS
+Proceso de eliminación de recursos sin haber terminado.
+
+UPDATE_COMPLETE
+Actualización completa de uno o más stack.
+
+UPDATE_COMPLETE_CLEANUP_IN_PROGRESS
+Eliminación de recursos de uno o más stacks después de ser actualizados.
+
+UPDATE_IN_PROGRESS
+Actualización de un stack en progreso.
+
+UPDATE_ROLLBACK_COMPLETE
+Vuelta al estado inicial de un stack después de una actualización fallida.
+
+UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS
+Eliminación en proceso de recursos de uno o más stacks después de un error en la actualización.
+
+UPDATE_ROLLBACK_FAILED
+Restauración errónea al estado anterior después de una actualización fallida.
