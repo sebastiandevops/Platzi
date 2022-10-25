@@ -17,7 +17,12 @@ echo "Tamaño Arreglo de cadenas:${#arregloCadenas[*]}"
 echo "Tamaño Arreglo de Números:${#arregloRangos[*]}"
 
 # Imprimir los tamaños de los arreglos
-echo "Posición 3 Arreglo de números:${#arregloNumeros[3]}"
-echo "Posición 3 Arreglo de cadenas:${#arregloCadenas[3]}"
-echo "Posición 3 Arreglo de Números:${#arregloRangos[3]}"
-echo "Posición 3 Arreglo de números:${#arregloNumeros[3]}"
+echo "Posición 3 Arreglo de números:${arregloNumeros[3]}"
+echo "Posición 3 Arreglo de cadenas:${arregloCadenas[3]}"
+echo "Posición 3 Arreglo de rangos:${arregloRangos[3]}"
+
+# Añadir y eliminar valores en un arreglo
+arregloNumeros[7]=20
+unset "arregloNumeros[0]"
+echo "Arreglo de números: ${arregloNumeros[*]}"
+echo "Tamaño arreglo de Números ${#arregloNumeros[*]}"
