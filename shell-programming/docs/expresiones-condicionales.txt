@@ -1,0 +1,16 @@
+Diferencia entre [ ] y [[ ]]
+
+Type	    viejo [ comando ]	nuevo [[ comando ]]	Example
+Cadena            >	                >	          [[ a > b ]]
+Cadena            <	                <	          [[ a < b ]]
+Cadena            !=	              !=	        [[ a != b ]]
+Cadena            =	                = or ==	    [[ a = b ]]
+Numero            -ge	              -ge	        [[ a -ge b ]]
+Numero            -le               -le         [[ a -le b ]]
+Numero            -lt               -lt         [[ a -lt b ]]
+Numero            -gt               -gt         [[ a -gt b ]]
+Concatenar        -a                &&          [[ -n $var && -f $var ]]
+Concatenar        -o                ||          [[ -n $var || -f $var ]]
+Agrupar           \(...\)	          (...)	      [[ $var = img* && ($var = *.png || $var = *.jpg) ]]
+Patrones          -	                = or ==	    [[ $name = a* ]]
+Patrones          -	                =~	        [[ $(date) =~ ^Fri\ ...\ 13 ]]
