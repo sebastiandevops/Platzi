@@ -17,4 +17,5 @@ Global:
 git config --global alias.arbolito "log --all --graph --decorate --oneline"
 Para correrlo:
 git arbolito
+
 Aporte creado por: Jorge Sarabia
