@@ -1,3 +1,4 @@
+---
 AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
   DynamoAtributo:
@@ -9,10 +10,10 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
-      # Esquema de claves para la tabla y los índices
-      # !Ref = Parameters
+        # Esquema de claves para la tabla y los índices
+        # !Ref = Parameters
         - AttributeName: !Ref DynamoAtributo
-        #Nombre del atributo, Obligatorio, Lo obtenemos como parametro
+          # Nombre del atributo, Obligatorio, Lo obtenemos como parametro
           AttributeType: S
           # S = string
       KeySchema:
