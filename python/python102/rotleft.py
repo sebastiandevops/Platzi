@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+import pdb
 # Complete the 'rotLeft' function below.
 #
 # The function is expected to return an INTEGER_ARRAY.
@@ -13,6 +15,7 @@ def rotLeft(a, d):
 
 
 if __name__ == '__main__':
+    pdb.set_trace()
     a = [1, 2, 3, 4, 5]
     d = 4
     print(*rotLeft(a, d))
