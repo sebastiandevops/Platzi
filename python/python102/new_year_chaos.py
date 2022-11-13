@@ -22,7 +22,7 @@ def minimumBribes(q):
 
 
 if __name__ == '__main__':
-    #pdb.set_trace()
+    # pdb.set_trace()
     q = [2, 1, 5, 3, 4]
     r = [2, 5, 1, 3, 4]
     minimumBribes(q)
