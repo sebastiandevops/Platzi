@@ -21,3 +21,6 @@ print(f"result2 = {result2}")
 
 result3 = high_order_func_v2(2, lambda x: x ** 2)
 print(f"result3 = {result3}")
+
+result4 = high_order_func_v2(2, lambda x: x ** 5)
+print(f"result4 = {result4}")
