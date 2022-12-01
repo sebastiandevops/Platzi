@@ -6,3 +6,4 @@
 **/terraform.tfstate.backup*
 **/mongodata*
 **/venv/
+**/__pycache__/
