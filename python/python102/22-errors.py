@@ -15,5 +15,3 @@ except Exception as error:
     print(error)
 
 print('Hola2')
-
-print('Hola')
