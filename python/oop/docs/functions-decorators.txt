@@ -1,0 +1,71 @@
+FUNCIONES: BASE DE LOS DECORADORES
+
+El concepto de decorador en Python es algo que podríamos ubicar en un nivel “intermedio” en el manejo del lenguaje, por lo que es buena idea que tengas una base sólida, sobre todo en cuanto a funciones al momento de profundizar e implementarlas.
+
+Los decoradores son una forma sencilla de llamar funciones de orden mayor, es decir, funciones que toman otra función como parámetro y/o retornan otra función como resultado. De esta forma un decorador añade capacidades a una función sin modificarla.
+
+Un ejemplo de esto son las llantas de un automóvil. Si les colocas cadenas para la nieve, el automóvil aún puede andar y además extiende su funcionalidad para conducirse en otros terrenos.
+
+RECORDANDO SOBRE FUNCIONES
+Antes de abordar el tema de decoradores haremos un pequeño repaso por las funciones, las cuales retornan un valor ante la entrada de un argumento.
+
+Analicemos este sencillo ejemplo donde una función que multiplica un número se eleva a la tercera potencia:
+
+def elevar_cubo(numero):
+	return numero * numero * numero
+
+Si damos como argumento el número 3, entonces tendremos como salida el número 27 al ejecutar la función:
+
+>>> elevar_cubo(3)
+27
+
+FUNCIONES COMO OBJETOS DE PRIMERA-CLASE
+Otro concepto importante a tener en cuenta es que en Python las funciones son objetos de primera-clase, es decir, que pueden ser pasados y utilizados como argumentos al igual que cualquier otro objeto (strings, enteros, flotantes, listas, etc.).
+
+Veamos un ejemplo donde definimos 3 diferentes funciones que utilizaremos de manera conjunta:
+
+def presentarse(nombre):
+	return f"Me llamo {nombre}"
+
+def estudiemos_juntos(nombre):
+	return f"¡Hey {nombre}, aprendamos Python!"
+
+def consume_funciones(funcion_entrante):
+	return funcion_entrante("David")
+
+Las primeras dos funciones son obvias en su resultado, donde nos mostrarán un mensaje con el valor de la variable nombre. La tercera función puede ser más compleja de predecir, ya que toma otra función como entrada. Veamos que pasa cuando colocamos una función como atributo:
+
+>>> consume_funciones(presentarse)
+'Me llamo David'
+
+>>> consume_funciones(estudiemos_juntos)
+'¡Hey David, aprendamos Python!'
+
+Pongamos atención en cómo la función consume_funciones() se escribe con paréntesis para ser ejecutada, mientras que la función presentarse y estudiemos_juntos solo hace referencia a estas.
+
+FUNCIONES ANIDADAS
+Al igual que los condicionales y bucles también puedes colocar funciones dentro de otra función.
+
+Tómate un minuto para analizar el siguiente código e inferir cuál será el resultado de salida:
+
+def funcion_mayor():
+	print("Esta es una función mayor y su mensaje de salida.")
+
+	def librerias():
+		print("Algunas librerías de Python son: Scikit-learn, NumPy y TensorFlow.")
+
+	def frameworks():
+		print("Algunos frameworks de Python son: Django, Dash y Flask.")
+
+	frameworks()
+	librerias()
+Si llamamos a la función funcion_mayor tendremos la siguiente salida:
+
+>>> funcion_mayor()
+
+Esta es una función mayor y su mensaje de salida.
+Algunos frameworks de Python son: Django, Dash y Flask.
+Algunas librerías de Python son: Scikit-learn, NumPy y TensorFlow.
+Debemos considerar que las funciones anidadas dentro de funcion_mayor no se ejecutan hasta que se llama a esta primera, siendo muestra del scope o alcance de las funciones. Si las llamamos obtendremos un error
+
+En la siguiente lectura entraremos al concepto de decoradores, setters y getters, pues al entender mejor las funciones será más fácil asimilar su uso en la implementación del encapsulamiento.
