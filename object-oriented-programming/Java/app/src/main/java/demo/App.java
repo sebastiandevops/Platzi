@@ -8,13 +8,13 @@ public class App {
         System.out.println("### Initializing ###");
         System.out.println("### Car: ###");
         Car car = new Car("AMQ123", new Account("Andrés Herrera", "AMD123", "andherr@hotmail.com", "678912"));
-        car.passenger = 4;
+        car.setPassenger(3);
         car.printDataCar();
 
         System.out.println("### UberX: ###");
         UberX uberX = new UberX("MKL185", new Account("Manuel Herrera",
             "MAN567", "marial@hotmail.com", "125478"), "Toyoya", "Corolla");
-        uberX.passenger = 3;
+        uberX.setPassenger(4);
         uberX.printDataCar();
     }
 }
