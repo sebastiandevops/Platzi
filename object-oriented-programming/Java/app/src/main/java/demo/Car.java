@@ -1,4 +1,4 @@
-package Java;
+package demo;
 
 public class Car {
     Integer id;
