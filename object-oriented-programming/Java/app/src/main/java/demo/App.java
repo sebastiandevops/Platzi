@@ -5,13 +5,16 @@ package demo;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hola, Mundo");
-        Car car = new Car("AMQ123", new Account("Andrés Herrera", "AMD123"));
+        System.out.println("### Initializing ###");
+        System.out.println("### Car: ###");
+        Car car = new Car("AMQ123", new Account("Andrés Herrera", "AMD123", "andherr@hotmail.com", "678912"));
         car.passenger = 4;
         car.printDataCar();
 
-        Car car2 = new Car("QWE567", new Account("Manuel Herrera", "MAN567"));
-        car2.passenger = 3;
-        car2.printDataCar();
+        System.out.println("### UberX: ###");
+        UberX uberX = new UberX("MKL185", new Account("Manuel Herrera",
+            "MAN567", "marial@hotmail.com", "125478"), "Toyoya", "Corolla");
+        uberX.passenger = 3;
+        uberX.printDataCar();
     }
 }
