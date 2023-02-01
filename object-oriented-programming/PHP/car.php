@@ -6,3 +6,4 @@ class Car {
   public $driver;
   public $passenger;
 }
+?>
