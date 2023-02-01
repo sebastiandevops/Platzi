@@ -1,3 +1,5 @@
+package demo;
+
 class Account {
     Integer id;
     String name;

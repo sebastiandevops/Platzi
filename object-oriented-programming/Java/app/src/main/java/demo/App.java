@@ -10,6 +10,12 @@ public class App {
         car.license = "AMQ123";
         car.driver = "Andrés Herrera";
         car.passenger = 4;
-        System.out.println("Car License: " + car.license);
+        car.printDataCar();
+
+        Car car2 = new Car();
+        car2.license = "QWE567";
+        car2.driver = "Manuel Herrera";
+        car2.passenger = 3;
+        car2.printDataCar();
     }
 }
