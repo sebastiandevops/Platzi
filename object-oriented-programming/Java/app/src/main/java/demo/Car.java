@@ -24,11 +24,7 @@ public class Car {
     }
 
     public void setPassenger(Integer passenger){
-        if (passenger == 4) {
-            this.passenger = passenger;
-        } else {
-            System.out.println("Passenger must be 4");
-        }
+        this.passenger = passenger;
     }
 
 	public Integer getId() {

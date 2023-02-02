@@ -16,5 +16,10 @@ public class App {
             "MAN567", "marial@hotmail.com", "125478"), "Toyoya", "Corolla");
         uberX.setPassenger(4);
         uberX.printDataCar();
+
+        System.out.println("### UberVan: ###");
+        UberVan uberVan = new UberVan("FGH123", new Account("Uber Valdivia", "UB123", "ubvaldivie@hotmail.com", "123456"));
+        uberVan.setPassenger(6);
+        uberVan.printDataCar();
     }
 }
