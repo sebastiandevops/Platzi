@@ -18,8 +18,15 @@ def create_client(client_name):
 
 def list_clients():
     """ Function to list clients """
-    global clients
     print(clients)
+
+
+def update_client(client_name, updated_name):
+    global clients
+    if client_name in clients:
+        clients = clients.replace(client_name, updated_name)
+    else:
+        print('Client is not in client\'s list')
 
 
 def _print_welcome():
@@ -29,17 +36,33 @@ def _print_welcome():
     print("What would you like to do today?")
     print("[C]reate client")
     print("[D]elete client")
+    print("[U]pdate client")
+
+
+def _get_client_name():
+    """Function to get client name from user input
+
+    Returns: client_name input
+
+    """
+    return input('Insert the client name: ')
 
 
 if __name__ == '__main__':
     _print_welcome()
     command = input()
+    command = command.upper()
 
     if command == 'C':
-        client_name = input("Which is the client name? ")
+        client_name = _get_client_name()
         create_client(client_name)
         list_clients()
     elif command == "D":
         pass
+    elif command == "U":
+        client_name = _get_client_name()
+        updated_name = input("Insert the new name: ")
+        update_client(client_name, updated_name)
+        list_clients()
     else:
         print("Invalid command")
