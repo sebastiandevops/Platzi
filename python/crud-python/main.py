@@ -10,7 +10,10 @@ def create_client(client_name):
         client_name (): string name of the client to create
     """
     global clients
-    clients += ',' + client_name
+    if client_name not in clients:
+        clients += ',' + client_name
+    else:
+        print("Client already in the client\'s list")
 
 
 def list_clients():
@@ -20,6 +23,7 @@ def list_clients():
 
 
 def _print_welcome():
+    """ Function to print welcome message """
     print("Welcome to Platzi Ventas")
     print("*" * 50)
     print("What would you like to do today?")
