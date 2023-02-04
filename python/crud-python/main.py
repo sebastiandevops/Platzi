@@ -7,7 +7,7 @@ def create_client(client_name):
     """Function to create clients
 
     Args:
-        client_name (): string name of the client to create
+        client_name (str): Client name of the client to create
     """
     global clients
     if client_name not in clients:
@@ -22,11 +22,30 @@ def list_clients():
 
 
 def update_client(client_name, updated_name):
+    """ Function to update client name
+
+    Args:
+        client_name (str): Old name of the client to update.
+        updated_name (str): New name of the client.
+    """
     global clients
     if client_name in clients:
         clients = clients.replace(client_name, updated_name)
     else:
         print('Client is not in client\'s list')
+
+
+def delete_client(client_name):
+    """ Function to delete client.
+
+    Args:
+        client_name (str): Client to delete.
+    """
+    global clients
+    if client_name in clients:
+        clients = clients.replace(client_name, "")
+    else:
+        print("Client is not in client\'s list")
 
 
 def _print_welcome():
@@ -58,7 +77,9 @@ if __name__ == '__main__':
         create_client(client_name)
         list_clients()
     elif command == "D":
-        pass
+        client_name = _get_client_name()
+        delete_client(client_name)
+        list_clients()
     elif command == "U":
         client_name = _get_client_name()
         updated_name = input("Insert the new name: ")
