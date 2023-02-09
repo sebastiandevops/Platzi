@@ -83,7 +83,10 @@ def _get_client_name():
     Returns: client_name input
 
     """
-    return input('Insert the client name: ')
+    client_name = None
+    while not client_name:
+        client_name = input('Insert the client name: ')
+    return client_name
 
 
 if __name__ == '__main__':
