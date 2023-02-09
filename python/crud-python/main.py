@@ -49,6 +49,14 @@ def delete_client(client_name):
 
 
 def search_client(client_name):
+    """Function to search for client in clients list.
+
+    Args:
+        client_name (str): Client name to search for.
+
+    Returns: True if client is found, False otherwise.
+
+    """
     clients_list = clients.split(',')
     for client in clients_list:
         if client != client_name:
