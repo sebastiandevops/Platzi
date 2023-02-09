@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import sys
+
 clients = 'Pablo,Ricardo'
 
 
@@ -86,6 +88,11 @@ def _get_client_name():
     client_name = None
     while not client_name:
         client_name = input('Insert the client name: ')
+        if client_name == 'exit':
+            client_name = None
+            break
+    if not client_name:
+        sys.exit()
     return client_name
 
 
