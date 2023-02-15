@@ -2,7 +2,7 @@
 
 import sys
 
-clients = 'Pablo,Ricardo'
+clients = ['Pablo', 'Ricardo']
 
 
 def create_client(client_name):
@@ -13,15 +13,15 @@ def create_client(client_name):
     """
     global clients
     if client_name not in clients:
-        clients += ',' + client_name
+        clients.append(client_name)
     else:
         print("Client already in the client\'s list")
 
 
 def list_clients():
     """ Function to list clients """
-    print(clients)
-
+    for idx, client in enumerate(clients):
+        print(f'{idx}: {client}')
 
 def update_client(client_name, updated_name):
     """ Function to update client name
@@ -32,7 +32,8 @@ def update_client(client_name, updated_name):
     """
     global clients
     if client_name in clients:
-        clients = clients.replace(client_name, updated_name)
+        index = clients.index(client_name)
+        clients[index] = updated_name
     else:
         print('Client is not in client\'s list')
 
@@ -45,7 +46,7 @@ def delete_client(client_name):
     """
     global clients
     if client_name in clients:
-        clients = clients.replace(client_name, "")
+        clients.remove(client_name)
     else:
         print("Client is not in client\'s list")
 
@@ -59,8 +60,8 @@ def search_client(client_name):
     Returns: True if client is found, False otherwise.
 
     """
-    clients_list = clients.split(',')
-    for client in clients_list:
+    global clients
+    for client in clients:
         if client != client_name:
             continue
         else:
