@@ -7,3 +7,4 @@
 **/mongodata*
 **/venv/
 **/__pycache__/
+**/pv.egg-info/
