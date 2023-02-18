@@ -7,7 +7,7 @@ setup(
     version='0.1',
     py_modules=['pv'],
     install_requires=[
-        'Click',
+        'click',
     ],
     entry_points='''
         [console_scripts]
