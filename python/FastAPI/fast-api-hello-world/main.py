@@ -69,20 +69,41 @@ class Person(BaseModel):
         )
     hair_color: Optional[HeirColor] = Field(default=None, example="black")
     is_married: Optional[bool] = Field(default=None)
-    email: EmailStr = Field(..., example="pitertoro@example.com")
-    # website_url: Optional[HttpUrl] = Field(default=None)
+    email: EmailStr = Field(
+        ...,
+        example="pitertoro@example.com"
+        )
+    password: str = Field(
+        ...,
+        min_length=8
+        )
 
-    # class Config:
-    #     schema_extra = {
-    #         "example": {
-    #             "first_name": "Sebastián",
-    #             "last_name": "Valencia",
-    #             "age": 35,
-    #             "hair_color": "black",
-    #             "is_married": False,
-    #             "email": "sebasvalencia726@gmail.com"
-    #         }
-    #     }
+
+# class PersonOut(BaseModel):
+#     first_name: str = Field(
+#         ...,
+#         min_length=1,
+#         max_length=50,
+#         example="Piter"
+#         )
+#     last_name: str = Field(
+#         ...,
+#         min_length=1,
+#         max_length=50,
+#         example="Toro"
+#         )
+#     age: int = Field(
+#         ...,
+#         gt=0,
+#         le=115,
+#         example=25
+#         )
+#     hair_color: Optional[HeirColor] = Field(default=None, example="black")
+#     is_married: Optional[bool] = Field(default=None)
+#     email: EmailStr = Field(
+#         ...,
+#         example="pitertoro@example.com"
+#         )
 
 
 @app.get("/")
@@ -91,7 +112,8 @@ def home():
 
 
 # Request and Response Body
-@app.post("/person/new")
+@app.post("/person/new", response_model=Person,
+          response_model_exclude={'password'})
 def create_person(person: Person = Body(...)):
     return person
 
