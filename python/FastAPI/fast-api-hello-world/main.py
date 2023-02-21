@@ -7,6 +7,8 @@ from enum import Enum
 # Pydantic
 from pydantic import BaseModel
 from pydantic import Field
+from pydantic import EmailStr
+# from pydantic import HttpUrl
 
 # FastAPI
 from fastapi import FastAPI
@@ -28,29 +30,59 @@ class HeirColor(Enum):
 
 
 class Location(BaseModel):
-    city: str
-    state: str
-    country: str
+    city: str = Field(
+        ...,
+        min_length=1,
+        max_length=50,
+        example="In"
+        )
+    state: str = Field(
+        min_length=1,
+        max_length=50,
+        example="MiddeOf"
+        )
+    country: str = Field(
+        min_length=1,
+        max_length=50,
+        example="Nowhere"
+        )
 
 
 class Person(BaseModel):
     first_name: str = Field(
         ...,
         min_length=1,
-        max_length=50
+        max_length=50,
+        example="Piter"
         )
     last_name: str = Field(
         ...,
         min_length=1,
-        max_length=50
+        max_length=50,
+        example="Toro"
         )
     age: int = Field(
         ...,
         gt=0,
         le=115,
+        example=25
         )
-    hair_color: Optional[HeirColor] = Field(default=None)
+    hair_color: Optional[HeirColor] = Field(default=None, example="black")
     is_married: Optional[bool] = Field(default=None)
+    email: EmailStr = Field(..., example="pitertoro@example.com")
+    # website_url: Optional[HttpUrl] = Field(default=None)
+
+    # class Config:
+    #     schema_extra = {
+    #         "example": {
+    #             "first_name": "Sebastián",
+    #             "last_name": "Valencia",
+    #             "age": 35,
+    #             "hair_color": "black",
+    #             "is_married": False,
+    #             "email": "sebasvalencia726@gmail.com"
+    #         }
+    #     }
 
 
 @app.get("/")
@@ -112,3 +144,4 @@ def update_person(
     results = person.dict()
     results.update(location.dict())
     return results
+    # return person
