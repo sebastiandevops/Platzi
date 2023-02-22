@@ -13,7 +13,7 @@ from pydantic import EmailStr
 # FastAPI
 from fastapi import FastAPI
 from fastapi import status
-from fastapi import Body, Query, Path, Form
+from fastapi import Body, Query, Path, Form, Header, Cookie
 
 app = FastAPI()
 
@@ -109,7 +109,7 @@ class LoginOut(BaseModel):
 @app.get(
     path="/",
     status_code=status.HTTP_200_OK
-    )
+)
 def home():
     return {"Hello": "World"}
 
@@ -119,7 +119,7 @@ def home():
     path="/person/new",
     response_model=Person,
     status_code=status.HTTP_201_CREATED
-    )
+)
 def create_person(person: Person = Body(...)):
     return person
 
@@ -128,7 +128,7 @@ def create_person(person: Person = Body(...)):
 @app.get(
     path="/person/detail",
     status_code=status.HTTP_200_OK,
-    )
+)
 def show_person(
     name: Optional[str] = Query(
         None,
@@ -153,7 +153,7 @@ def show_person(
 @app.get(
     path="/person/detail/{person_id}",
     status_code=status.HTTP_200_OK
-    )
+)
 def show_person(
     person_id: int = Path(
         ...,
@@ -170,7 +170,7 @@ def show_person(
 @app.put(
     path="/person/{person_id}",
     status_code=status.HTTP_202_ACCEPTED
-    )
+)
 def update_person(
     person_id: int = Path(
         ...,
@@ -193,9 +193,36 @@ def update_person(
     response_model=LoginOut,
     status_code=status.HTTP_200_OK,
     response_model_exclude={'password'}
-    )
+)
 def login(
     username: str = Form(...),
     password: str = Form(...)
 ):
     return LoginOut(username=username)
+
+
+# Cookies and headers Parameters.
+@app.post(
+    path="/contact",
+    status_code=status.HTTP_200_OK
+)
+def contact(
+    first_name: str = Form(
+        ...,
+        max_length=20,
+        min_length=1,
+    ),
+    last_name: str = Form(
+        ...,
+        max_length=20,
+        min_length=1,
+    ),
+    email: EmailStr = Form(...),
+    message: str = Form(
+        ...,
+        min_length=20,
+    ),
+    user_agent: Optional[str] = Header(default=None),
+    ads: Optional[str] = Cookie(default=None)
+):
+    return user_agent
