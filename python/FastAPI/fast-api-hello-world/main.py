@@ -13,6 +13,7 @@ from pydantic import EmailStr
 # FastAPI
 from fastapi import FastAPI
 from fastapi import status
+from fastapi import HTTPException
 from fastapi import Body, Query, Path, Form, Header, Cookie, UploadFile, File
 
 app = FastAPI()
