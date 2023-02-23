@@ -150,6 +150,9 @@ def show_person(
     return {name: age}
 
 
+persons = [1, 2, 3, 4, 5]
+
+
 # Validations: Path Parameters
 @app.get(
     path="/person/detail/{person_id}",
@@ -164,6 +167,11 @@ def show_person(
         example=12345
     )
 ):
+    if person_id not in persons:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="¡This person ddoes not exist!"
+        )
     return {person_id: "It exists!"}
 
 
