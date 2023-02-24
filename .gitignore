@@ -8,3 +8,4 @@
 **/venv/
 **/__pycache__/
 **/pv.egg-info/
+**/hydra.restore
