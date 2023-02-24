@@ -119,11 +119,26 @@ def home():
 # Request and Response Body
 @app.post(
     path="/person/new",
-    response_model=Person,
+    response_model=PersonOut,
     status_code=status.HTTP_201_CREATED,
-    tags=["Persons"]
+    tags=["Persons"],
+    summary="Create Person in the app"
 )
 def create_person(person: Person = Body(...)):
+    """
+    Create Person
+
+    This path operation creates a person in the app
+    and save the information in the database.
+
+    Parameters:
+        - Request body parameter:
+            - **person: Person** -> A person model with first name,
+                        last name, age, hair color and marital status.
+
+    Returns: a person model with first name, last name, age, hair color
+             and marital status.
+    """
     return person
 
 
@@ -131,7 +146,8 @@ def create_person(person: Person = Body(...)):
 @app.get(
     path="/person/detail",
     status_code=status.HTTP_200_OK,
-    tags=["Persons"]
+    tags=["Persons"],
+    summary="Show Person in the app"
 )
 def show_person(
     name: Optional[str] = Query(
@@ -150,6 +166,19 @@ def show_person(
         example=25
     )
 ):
+    """
+    Show Person
+
+    This function searches for a person in the app and
+    returns a dictionary of its name and age, if exists.
+
+    Parameters:
+        - name: The name of the person.
+        - age: The age of the person.
+
+    Returns: dictionary of person name and age.
+
+    """
     return {name: age}
 
 
@@ -160,7 +189,8 @@ persons = [1, 2, 3, 4, 5]
 @app.get(
     path="/person/detail/{person_id}",
     status_code=status.HTTP_200_OK,
-    tags=["Persons"]
+    tags=["Persons"],
+    summary="Show person by ID"
 )
 def show_person(
     person_id: int = Path(
@@ -171,6 +201,19 @@ def show_person(
         example=12345,
     )
 ):
+    """
+    Show Person
+
+    This function searches for a person in the app based on the id
+    passed to the function as Path Parameter and returns the person id
+    if exists.
+
+    Parameters:
+        - person_id: [int] The is to look for.
+
+    Returns: the person id if exists.
+
+    """
     if person_id not in persons:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
