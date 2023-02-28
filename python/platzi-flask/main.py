@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 from flask import Flask, request, make_response, redirect, render_template
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 todos = ["Buy coffee", "Develop a website", "Publish a project"]
 
