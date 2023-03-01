@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import unittest
+
 from flask import Flask, request, make_response, redirect, render_template
 from flask import session, url_for, flash
 from flask_wtf import FlaskForm
@@ -19,6 +21,12 @@ class LoginForm(FlaskForm):
     username = StringField("Username: ", validators=[DataRequired()])
     password = PasswordField("Password: ", validators=[DataRequired()])
     submit = SubmitField("Submit")
+
+
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover("tests")
+    unittest.TextTestRunner().run(tests)
 
 
 @app.errorhandler(404)
