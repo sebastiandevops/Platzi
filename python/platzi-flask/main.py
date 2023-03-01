@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, request, make_response, redirect, render_template
-from flask import session, url_for
+from flask import session, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
@@ -54,6 +54,8 @@ def hello():
     if request.method == 'POST':
         username = login_form.username.data
         session["username"] = username
+        flash("Username successfully registered.")
+
         return redirect(url_for("index"))
     return render_template("hello.html", **context)
 
