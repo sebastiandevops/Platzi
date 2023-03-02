@@ -41,16 +41,15 @@ def index():
 def hello():
     user_ip = session.get("user_ip")
     username = session.get("username")
-    todos = [todo.to_dict()['description'] for todo in get_todos(username)]
     context = {
         "user_ip": user_ip,
-        "todos": todos,
+        "todos": get_todos(user_id=username),
         "username": username,
     }
-    # users = get_users()
-    # for user in users:
-    #     print(user.id)
-    #     print(user.to_dict()["password"])
+    users = get_users()
+    for user in users:
+        print(user.id)
+        print(user.to_dict()["password"])
 
     return render_template("hello.html", **context)
 
