@@ -7,11 +7,10 @@ from flask import session, url_for, flash
 
 from app import create_app
 from app.forms import LoginForm
+from app.firestore_service import get_users, get_todos
 
 
 app = create_app()
-
-todos = ["Buy coffee", "Develop a website", "Publish a project"]
 
 
 @app.cli.command()
@@ -42,11 +41,17 @@ def index():
 def hello():
     user_ip = session.get("user_ip")
     username = session.get("username")
+    todos = [todo.to_dict()['description'] for todo in get_todos(username)]
     context = {
         "user_ip": user_ip,
         "todos": todos,
         "username": username,
     }
+    # users = get_users()
+    # for user in users:
+    #     print(user.id)
+    #     print(user.to_dict()["password"])
+
     return render_template("hello.html", **context)
 
 
