@@ -10,3 +10,4 @@
 **/pv.egg-info/
 **/hydra.restore
 **/node_modules/
+**/.gcloudignore
