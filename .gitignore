@@ -11,3 +11,4 @@
 **/hydra.restore
 **/node_modules/
 **/.gcloudignore
+**/.settings/
